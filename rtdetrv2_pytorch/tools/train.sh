@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 torchrun --master_port=9909 --nproc_per_node=4 /home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py -c /home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/configs/rtdetrv2/rtdetrv2_r50vd_6x_coco.yml --use-amp --seed=0 &> log.txt 2>&1 &

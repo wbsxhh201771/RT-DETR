@@ -1,0 +1,145 @@
+W0204 19:00:25.497749 123528269268032 torch/distributed/run.py:779] 
+W0204 19:00:25.497749 123528269268032 torch/distributed/run.py:779] *****************************************
+W0204 19:00:25.497749 123528269268032 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0204 19:00:25.497749 123528269268032 torch/distributed/run.py:779] *****************************************
+Initialized distributed mode...
+Not init distributed mode.Not init distributed mode.
+
+Not init distributed mode.
+cfg:  {'task': 'detection', '_model': None, '_postprocessor': None, '_criterion': None, '_optimizer': None, '_lr_scheduler': None, '_lr_warmup_scheduler': None, '_train_dataloader': None, '_val_dataloader': None, '_ema': None, '_scaler': None, '_train_dataset': None, '_val_dataset': None, '_collate_fn': None, '_evaluator': None, '_writer': None, 'num_workers': 0, 'batch_size': None, '_train_batch_size': None, '_val_batch_size': None, '_train_shuffle': None, '_val_shuffle': None, 'resume': None, 'tuning': None, 'epoches': 72, 'last_epoch': -1, 'use_amp': True, 'use_ema': True, 'ema_decay': 0.9999, 'ema_warmups': 2000, 'sync_bn': True, 'clip_max_norm': 0.1, 'find_unused_parameters': False, 'seed': 0, 'print_freq': 100, 'checkpoint_freq': 1, 'output_dir': './output/rtdetrv2_r50vd_6x_coco', 'summary_dir': None, 'device': '', 'yaml_cfg': {'task': 'detection', 'evaluator': {'type': 'CocoEvaluator', 'iou_types': ['bbox']}, 'num_classes': 1, 'remap_mscoco_category': True, 'train_dataloader': {'type': 'DataLoader', 'dataset': {'type': 'CocoDetection', 'img_folder': '/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/dataset/Fire-Detection/train', 'ann_file': '/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/dataset/Fire-Detection/train/_annotations.coco.json', 'return_masks': False, 'transforms': {'type': 'Compose', 'ops': [{'type': 'RandomPhotometricDistort', 'p': 0.5}, {'type': 'RandomZoomOut', 'fill': 0}, {'type': 'RandomIoUCrop', 'p': 0.8}, {'type': 'SanitizeBoundingBoxes', 'min_size': 1}, {'type': 'RandomHorizontalFlip'}, {'type': 'Resize', 'size': [640, 640]}, {'type': 'SanitizeBoundingBoxes', 'min_size': 1}, {'type': 'ConvertPILImage', 'dtype': 'float32', 'scale': True}, {'type': 'ConvertBoxes', 'fmt': 'cxcywh', 'normalize': True}], 'policy': {'name': 'stop_epoch', 'epoch': 71, 'ops': ['RandomPhotometricDistort', 'RandomZoomOut', 'RandomIoUCrop']}}}, 'shuffle': True, 'num_workers': 4, 'drop_last': True, 'collate_fn': {'type': 'BatchImageCollateFuncion', 'scales': [480, 512, 544, 576, 608, 640, 640, 640, 672, 704, 736, 768, 800], 'stop_epoch': 71}, 'total_batch_size': 16}, 'val_dataloader': {'type': 'DataLoader', 'dataset': {'type': 'CocoDetection', 'img_folder': '/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/dataset/Fire-Detection/valid', 'ann_file': '/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/dataset/Fire-Detection/valid/_annotations.coco.json', 'return_masks': False, 'transforms': {'type': 'Compose', 'ops': [{'type': 'Resize', 'size': [640, 640]}, {'type': 'ConvertPILImage', 'dtype': 'float32', 'scale': True}]}}, 'shuffle': False, 'num_workers': 4, 'drop_last': False, 'collate_fn': {'type': 'BatchImageCollateFuncion'}, 'total_batch_size': 32}, 'print_freq': 100, 'output_dir': './output/rtdetrv2_r50vd_6x_coco', 'checkpoint_freq': 1, 'sync_bn': True, 'find_unused_parameters': False, 'use_amp': True, 'scaler': {'type': 'GradScaler', 'enabled': True}, 'use_ema': True, 'ema': {'type': 'ModelEMA', 'decay': 0.9999, 'warmups': 2000}, 'epoches': 72, 'clip_max_norm': 0.1, 'optimizer': {'type': 'AdamW', 'params': [{'params': '^(?=.*backbone)(?!.*norm).*$', 'lr': 1e-05}, {'params': '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn)).*$', 'weight_decay': 0.0}], 'lr': 0.0001, 'betas': [0.9, 0.999], 'weight_decay': 0.0001}, 'lr_scheduler': {'type': 'MultiStepLR', 'milestones': [1000], 'gamma': 0.1}, 'lr_warmup_scheduler': {'type': 'LinearWarmup', 'warmup_duration': 2000}, 'model': 'RTDETR', 'criterion': 'RTDETRCriterionv2', 'postprocessor': 'RTDETRPostProcessor', 'use_focal_loss': True, 'eval_spatial_size': [640, 640], 'RTDETR': {'backbone': 'PResNet', 'encoder': 'HybridEncoder', 'decoder': 'RTDETRTransformerv2'}, 'PResNet': {'depth': 50, 'variant': 'd', 'freeze_at': 0, 'return_idx': [1, 2, 3], 'num_stages': 4, 'freeze_norm': True, 'pretrained': True}, 'HybridEncoder': {'in_channels': [512, 1024, 2048], 'feat_strides': [8, 16, 32], 'hidden_dim': 256, 'use_encoder_idx': [2], 'num_encoder_layers': 1, 'nhead': 8, 'dim_feedforward': 1024, 'dropout': 0.0, 'enc_act': 'gelu', 'expansion': 1.0, 'depth_mult': 1, 'act': 'silu'}, 'RTDETRTransformerv2': {'feat_channels': [256, 256, 256], 'feat_strides': [8, 16, 32], 'hidden_dim': 256, 'num_levels': 3, 'num_layers': 6, 'num_queries': 300, 'num_denoising': 100, 'label_noise_ratio': 0.5, 'box_noise_scale': 1.0, 'eval_idx': -1, 'num_points': [4, 4, 4], 'cross_attn_method': 'default', 'query_select_method': 'default'}, 'RTDETRPostProcessor': {'num_top_queries': 300}, 'RTDETRCriterionv2': {'weight_dict': {'loss_vfl': 1, 'loss_bbox': 5, 'loss_giou': 2}, 'losses': ['vfl', 'boxes'], 'alpha': 0.75, 'gamma': 2.0, 'matcher': {'type': 'HungarianMatcher', 'weight_dict': {'cost_class': 2, 'cost_bbox': 5, 'cost_giou': 2}, 'alpha': 0.25, 'gamma': 2.0}}, '__include__': ['../dataset/coco_detection.yml', '../runtime.yml', './include/dataloader.yml', './include/optimizer.yml', './include/rtdetrv2_r50vd.yml'], 'config': '/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/configs/rtdetrv2/rtdetrv2_r50vd_6x_coco.yml', 'seed': 0, 'test_only': False, 'print_method': 'builtin', 'print_rank': 0}}
+Start training
+Load PResNet50 state_dict
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 65, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 35, in main
+[rank2]:     solver.fit()
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/det_solver.py", line 20, in fit
+[rank2]:     self.train()
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 68, in train
+[rank2]:     self._setup()
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 42, in _setup
+[rank2]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank2]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank2]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank2]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 822, in __init__
+[rank2]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank2]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/utils.py", line 286, in _verify_param_shape_across_processes
+[rank2]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank2]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:275, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.20.5
+[rank2]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank2]: Last error:
+[rank2]: Duplicate GPU detected : rank 2 and rank 0 both on CUDA device 1000
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 65, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 35, in main
+[rank3]:     solver.fit()
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/det_solver.py", line 20, in fit
+[rank3]:     self.train()
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 68, in train
+[rank3]:     self._setup()
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 42, in _setup
+[rank3]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank3]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank3]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank3]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 822, in __init__
+[rank3]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank3]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/utils.py", line 286, in _verify_param_shape_across_processes
+[rank3]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank3]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:275, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.20.5
+[rank3]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank3]: Last error:
+[rank3]: Duplicate GPU detected : rank 3 and rank 0 both on CUDA device 1000
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 65, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 35, in main
+[rank0]:     solver.fit()
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/det_solver.py", line 20, in fit
+[rank0]:     self.train()
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 68, in train
+[rank0]:     self._setup()
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 42, in _setup
+[rank0]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank0]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank0]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank0]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 822, in __init__
+[rank0]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank0]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/utils.py", line 286, in _verify_param_shape_across_processes
+[rank0]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank0]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:275, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.20.5
+[rank0]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank0]: Last error:
+[rank0]: Duplicate GPU detected : rank 0 and rank 1 both on CUDA device 1000
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 65, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py", line 35, in main
+[rank1]:     solver.fit()
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/det_solver.py", line 20, in fit
+[rank1]:     self.train()
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 68, in train
+[rank1]:     self._setup()
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/solver/_solver.py", line 42, in _setup
+[rank1]:     self.model = dist_utils.warp_model(self.model.to(device), sync_bn=cfg.sync_bn, \
+[rank1]:   File "/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/../src/misc/dist_utils.py", line 140, in warp_model
+[rank1]:     model = DDP(model, device_ids=[rank], output_device=rank, find_unused_parameters=find_unused_parameters)
+[rank1]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 822, in __init__
+[rank1]:     _verify_param_shape_across_processes(self.process_group, parameters)
+[rank1]:   File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/utils.py", line 286, in _verify_param_shape_across_processes
+[rank1]:     return dist._verify_params_across_processes(process_group, tensors, logger)
+[rank1]: torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/NCCLUtils.hpp:275, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.20.5
+[rank1]: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+[rank1]: Last error:
+[rank1]: Duplicate GPU detected : rank 1 and rank 0 both on CUDA device 1000
+E0204 19:00:34.209925 123528269268032 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 58911) of binary: /home/crh/anaconda3/envs/rtv2_py38/bin/python
+Traceback (most recent call last):
+  File "/home/crh/anaconda3/envs/rtv2_py38/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 348, in wrapper
+    return f(*args, **kwargs)
+  File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/crh/anaconda3/envs/rtv2_py38/lib/python3.8/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home/crh/Desktop/RT-DETR/rtdetrv2_pytorch/tools/train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2025-02-04_19:00:34
+  host      : crh-Standard-PC-Q35-ICH9-2009
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 58912)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2025-02-04_19:00:34
+  host      : crh-Standard-PC-Q35-ICH9-2009
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 58913)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2025-02-04_19:00:34
+  host      : crh-Standard-PC-Q35-ICH9-2009
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 58914)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-02-04_19:00:34
+  host      : crh-Standard-PC-Q35-ICH9-2009
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 58911)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
